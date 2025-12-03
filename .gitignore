@@ -1,4 +1,4 @@
-day1/aoc-day1/target/
+**/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
