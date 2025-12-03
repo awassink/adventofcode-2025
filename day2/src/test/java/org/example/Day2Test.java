@@ -28,6 +28,7 @@ class Day2Test {
     @Test
     void testInvalidIDsP1() {
         var result = Day2.invalidIDsP1(RANGES_INPUT);
+        assertEquals(8,result.length);
         assertEquals("11",result[0]);
         assertEquals("22",result[1]);
         assertEquals("99",result[2]);
@@ -39,14 +40,45 @@ class Day2Test {
     }
 
     @Test
-    void testTotalInvalidIDsP2() {
-        var result = Day2.totalInvalidIDsP2(RANGES_INPUT);
+    void testTotalInvalidIDsP1() {
+        var result = Day2.totalInvalidIDsP1(RANGES_INPUT);
         assertEquals(1227775554,result);
     }
 
     @Test
-    void testTotalFinalInput() {
-        var result = Day2.totalInvalidIDsP2(FINAL_INPUT);
+    void testTotalFinalInputP1() {
+        var result = Day2.totalInvalidIDsP1(FINAL_INPUT);
         assertEquals(24747430309L,result);
+    }
+
+    @Test
+    void testInvalidIDsP2() {
+        var result = Day2.invalidIDsP2(RANGES_INPUT);
+        assertEquals(13,result.length);
+        assertEquals("11",result[0]);
+        assertEquals("22",result[1]);
+        assertEquals("99",result[2]);
+        assertEquals("111",result[3]);
+        assertEquals("999",result[4]);
+        assertEquals("1010",result[5]);
+        assertEquals("1188511885",result[6]);
+        assertEquals("222222",result[7]);
+        assertEquals("446446",result[8]);
+        assertEquals("38593859",result[9]);
+        assertEquals("565656",result[10]);
+        assertEquals("824824824",result[11]);
+        assertEquals("2121212121",result[12]);
+    }
+
+    @Test
+    void testTotalInvalidIDsP2() {
+        var result = Day2.totalInvalidIDsP2(RANGES_INPUT);
+        assertEquals(4174379265L,result);
+    }
+
+    @Test
+    void testTotalFinalInputP2() {
+        var result = Day2.totalInvalidIDsP2(FINAL_INPUT);
+        assertEquals(30962646823L,result);
     }
 }

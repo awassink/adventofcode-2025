@@ -34,7 +34,7 @@ public class Day2 {
         }
         return result.toArray(new String[0]);
     }
-    public static long totalInvalidIDsP2(String input) {
+    public static long totalInvalidIDsP1(String input) {
         var invalidIDs = invalidIDsP1(input);
         long total = 0;
         for (var invalidID : invalidIDs) {
@@ -58,11 +58,20 @@ public class Day2 {
                         if (same) {
                             result.add(s);
                             IO.println("Invalid ID: " + s);
+                            break;
                         }
                     }
                 }
             }
         }
         return result.toArray(new String[0]);
+    }
+    public static long totalInvalidIDsP2(String input) {
+        var invalidIDs = invalidIDsP2(input);
+        long total = 0;
+        for (var invalidID : invalidIDs) {
+            total += parseLong(invalidID);
+        }
+        return total;
     }
 }
