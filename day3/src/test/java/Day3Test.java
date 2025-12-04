@@ -224,15 +224,15 @@ class Day3Test {
     }
 
     @Test
-    void maxBank3Joltage() {
-        var batteryBank = new int[]{8,1,8,1,8,1,9,1,1,1,1,2,1,1,1};
-        var result = Day3.maxBankJoltage(batteryBank);
+    void maxBank3JoltageP1() {
+        var batteryBank = new long[]{8,1,8,1,8,1,9,1,1,1,1,2,1,1,1};
+        var result = Day3.maxBankJoltageP1(batteryBank);
         assertEquals(92, result);
     }
 
     @Test
-    void maxMatrixJoltage() {
-        var result = Day3.maxMatrixJoltage(Day3.getBatteryMatrix(INPUT));
+    void maxMatrixJoltageP1() {
+        var result = Day3.maxMatrixJoltageP1(Day3.getBatteryMatrix(INPUT));
         assertEquals(4, result.length);
         assertEquals(98, result[0]);
         assertEquals(89, result[1]);
@@ -241,14 +241,50 @@ class Day3Test {
     }
 
     @Test
-    void totalMatrixJoltage() {
-        var result = Day3.totalMatrixJoltage(Day3.getBatteryMatrix(INPUT));
+    void totalMatrixJoltageP1() {
+        var result = Day3.totalMatrixJoltageP1(Day3.getBatteryMatrix(INPUT));
         assertEquals(357, result);
     }
 
     @Test
-    void totalFinalMatrixJoltage() {
-        var result = Day3.totalMatrixJoltage(Day3.getBatteryMatrix(FINAL_INPUT));
+    void totalFinalMatrixJoltageP1() {
+        var result = Day3.totalMatrixJoltageP1(Day3.getBatteryMatrix(FINAL_INPUT));
         assertEquals(17405, result);
+    }
+
+    @Test
+    void maxBank3JoltageP2a() {
+        var batteryBank = new long[]{8,1,8,1,8,1,9,1,1,1,1,2,1,1,1};
+        var result = Day3.maxBankJoltageP2(batteryBank);
+        assertEquals(888911112111L, result);
+    }
+
+    @Test
+    void maxBank3JoltageP2b() {
+        var batteryBank = new long[]{2,3,4,2,3,4,2,3,4,2,3,4,2,7,8};
+        var result = Day3.maxBankJoltageP2(batteryBank);
+        assertEquals(434234234278L, result);
+    }
+
+    @Test
+    void maxMatrixJoltageP2() {
+        var result = Day3.maxMatrixJoltageP2(Day3.getBatteryMatrix(INPUT));
+        assertEquals(4, result.length);
+        assertEquals(987654321111L, result[0]);
+        assertEquals(811111111119L, result[1]);
+        assertEquals(434234234278L, result[2]);
+        assertEquals(888911112111L, result[3]);
+    }
+
+    @Test
+    void totalMatrixJoltageP2() {
+        var result = Day3.totalMatrixJoltageP2(Day3.getBatteryMatrix(INPUT));
+        assertEquals("3121910778619", result.toString());
+    }
+
+    @Test
+    void totalFinalMatrixJoltageP2() {
+        var result = Day3.totalMatrixJoltageP2(Day3.getBatteryMatrix(FINAL_INPUT));
+        assertEquals("171990312704598", result.toString());
     }
 }
