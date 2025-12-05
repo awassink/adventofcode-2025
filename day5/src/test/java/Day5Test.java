@@ -9,6 +9,8 @@ class Day5Test {
             10-14
             16-20
             12-18
+            13-17
+            4-6
             
             1
             5
@@ -1220,7 +1222,7 @@ class Day5Test {
         assertEquals(1, result.ids()[0]);
         assertEquals(32, result.ids()[5]);
 
-        assertEquals(4, result.ranges().length);
+        assertEquals(6, result.ranges().length);
         assertEquals(3, result.ranges()[0][0]);
         assertEquals(5, result.ranges()[0][1]);
         assertEquals(12, result.ranges()[3][0]);
@@ -1240,5 +1242,17 @@ class Day5Test {
     void getFreshIdsFinal() {
         var result = Day5.getFreshIds(Day5.getIdRangesAndIds(FINAL_INPUT));
         assertEquals(664, result.length);
+    }
+
+    @Test
+    void getAllFreshIds() {
+        var result = Day5.countAllFreshIds(Day5.getIdRangesAndIds(INPUT));
+        assertEquals(15, result);
+    }
+
+    @Test
+    void getAllFreshIdsFinal() {
+        var result = Day5.countAllFreshIds(Day5.getIdRangesAndIds(FINAL_INPUT));
+        assertEquals(350780324308385L, result);
     }
 }
