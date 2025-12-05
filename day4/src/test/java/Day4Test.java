@@ -171,13 +171,31 @@ class Day4Test {
 
     @Test
     void countAccessibleRolls() {
-        var result = Day4.countAccessibleRolls(Day4.getRolMatrix(INPUT));
-        assertEquals(13, result);
+        var result1 = Day4.countAccessibleRolls(Day4.getRolMatrix(INPUT));
+        assertEquals(13, result1.accessibleRolls());
+
+        var result2 = Day4.countAccessibleRolls(result1.rollMatrix());
+        assertEquals(12, result2.accessibleRolls());
+
+        var result3 = Day4.countAccessibleRolls(result2.rollMatrix());
+        assertEquals(7, result3.accessibleRolls());
     }
 
     @Test
-    void countAccessibleRollsFinal() {
+    void countAccessibleRollsFinalP1() {
         var result = Day4.countAccessibleRolls(Day4.getRolMatrix(FINAL_INPUT));
-        assertEquals(1602, result);
+        assertEquals(1602, result.accessibleRolls());
+    }
+
+    @Test
+    void countRemovedRolls() {
+        var result = Day4.countRemovedRolls(Day4.getRolMatrix(INPUT));
+        assertEquals(43, result);
+    }
+
+    @Test
+    void countRemovedRollsFinal() {
+        var result = Day4.countRemovedRolls(Day4.getRolMatrix(FINAL_INPUT));
+        assertEquals(9518, result);
     }
 }

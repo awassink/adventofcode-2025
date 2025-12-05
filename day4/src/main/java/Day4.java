@@ -9,10 +9,12 @@ public class Day4 {
         }
         return rolMatrix;
     }
-    public static int countAccessibleRolls(char[][] rollMatrix) {
+    public static AccessibleRollMatrix countAccessibleRolls(char[][] rollMatrix) {
         int accessibleRolls = 0;
+        char[][] newRollMatrix = new char[rollMatrix.length][rollMatrix[0].length];
         for (var i = 0; i < rollMatrix.length; i++) {
             for (var j = 0; j < rollMatrix[i].length; j++) {
+                newRollMatrix[i][j] = rollMatrix[i][j];
                 if  (rollMatrix[i][j] == '@') {
                     int count = 0;
                     if  (i>0 && j>0 && rollMatrix[i-1][j-1] == '@') count++;
@@ -25,11 +27,24 @@ public class Day4 {
                     if  (i+1<rollMatrix.length && j+1<rollMatrix[i].length && rollMatrix[i+1][j+1] == '@') count++;
                     if (count < 4) {
                         accessibleRolls++;
+                        newRollMatrix[i][j] = 'x';
 //                        System.out.printf("Roll %d,%d accessible\n",i,j);
                     }
                 }
             }
         }
-        return accessibleRolls;
+        return new AccessibleRollMatrix(accessibleRolls, newRollMatrix);
     }
+
+    public static int countRemovedRolls(char[][] rollMatrix) {
+        int countAccessibleRolls = 0;
+        AccessibleRollMatrix arm = new AccessibleRollMatrix(0, rollMatrix);
+        do {
+            arm = countAccessibleRolls(arm.rollMatrix());
+            countAccessibleRolls +=  arm.accessibleRolls();
+        } while (arm.accessibleRolls() > 0);
+        return countAccessibleRolls;
+    }
+
+    public record AccessibleRollMatrix(int accessibleRolls, char[][] rollMatrix) {}
 }
