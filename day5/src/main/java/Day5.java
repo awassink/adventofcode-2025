@@ -36,16 +36,14 @@ public class Day5 {
     }
     public static long countAllFreshIds(IdRangesAndIds idRangesAndIds) {
         List<List<Long>> list = Arrays.stream(idRangesAndIds.ranges)
-                .map(
-                //Stream all the elements of each 1d array and put them into a list of Integer.
-                internalArray -> Arrays.stream(internalArray).boxed().collect(Collectors.toList()
-                )).collect(Collectors.toList());
-        Collections.sort(list, new Comparator<List<Long>>(){
-            @Override
-            public int compare(List<Long> o1, List<Long> o2){
-                return o1.get(0).compareTo(o2.get(0));
-            }
-        });
+                .map(internalArray -> Arrays.stream(internalArray).boxed().collect(Collectors.toList()
+                    )).sorted(new Comparator<List<Long>>() {
+                        @Override
+                        public int compare(List<Long> o1, List<Long> o2) {
+                            return o1.getFirst().compareTo(o2.getFirst());
+                        }
+                    }
+                ).collect(Collectors.toList());
         for (var i = 1; i < list.size(); i++) {
             if (list.get(i).get(0) <= list.get(i-1).get(1)) {
                 list.get(i).set(0, list.get(i-1).get(1)+1);
@@ -57,7 +55,7 @@ public class Day5 {
         }
         long totalFreshIDs = 0;
         for (List<Long> l : list) {
-            System.out.printf("%d-%d\n", l.get(0), l.get(1));
+//            System.out.printf("%d-%d\n", l.get(0), l.get(1));
             totalFreshIDs += l.get(1)-l.get(0)+1;
         }
         return totalFreshIDs;
