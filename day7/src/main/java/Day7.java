@@ -55,16 +55,6 @@ public class Day7 {
                     }
                 }
             }
-////            final List<Integer> copy = new ArrayList<>(newBeamIndexes);
-////            var duplicates = copy.stream()
-////                    .filter(i -> Collections.frequency(copy, i) > 1)
-////                    .distinct()
-////                    .collect(Collectors.toList());
-////            for (var duplicate : duplicates) {
-//////                    IO.println("duplicate path on idx: " + duplicate);
-////                newBeamPaths[duplicate] = lastBeamPaths[duplicate-1]+lastBeamPaths[duplicate]+lastBeamPaths[duplicate+1];
-////                newBeamIndexes.remove(newBeamIndexes.indexOf(duplicate));
-////            }
 //            IO.println(Arrays.toString(line.toCharArray()));
 //            IO.println(Arrays.toString(newBeamPaths));
             lastBeamPaths = newBeamPaths;
