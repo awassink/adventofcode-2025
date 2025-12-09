@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import javax.vecmath.Point3d;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -121,6 +122,16 @@ class Day8Test {
     void calculateProductFinal() {
         var result = Day8.calculateProduct(Day8.countCircuitsPoints(Day8.connectClosestPoints(Day8.getDistances(Day8.getPoints(FINAL_INPUT)),1000)));
         assertEquals(115885, result);
+    }
+
+    @Test
+    void connectClosestPointsUntilOneCircuit() {
+        Point3d[] points = Day8.getPoints(FINAL_INPUT);
+        var result = Day8.connectClosestPointsUntilOneCircuit(Day8.getDistances(points),points.length);
+        assertEquals(999, result.length);
+        assertEquals(19525, result[result.length-1].a().x);
+        assertEquals(14041, result[result.length-1].b().x);
+        assertEquals(274150525, result[result.length-1].a().x * result[result.length-1].b().x);
     }
 
     public static final String FINAL_INPUT = """

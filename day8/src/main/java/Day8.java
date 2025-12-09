@@ -108,4 +108,20 @@ public class Day8 {
         }
         return total;
     }
+    public static Edge[] connectClosestPointsUntilOneCircuit(Edge[] edges, int numPoints) {
+        var connections = new ArrayList<Edge>();
+        var i = 0;
+        do {
+            var edge = edges[i];
+            if (!arePointsConnected(connections, edge.a, edge.b)){
+//                System.out.printf("Connecting points %s to %s\n", edge.a, edge.b);
+                connections.add(edge);
+            } else {
+//                System.out.printf("Points %s and %s already connected\n", edge.a, edge.b);
+            }
+            i++;
+        } while (connections.size() < numPoints-1);
+
+        return connections.toArray(Edge[]::new);
+    }
 }
